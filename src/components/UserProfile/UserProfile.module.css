@@ -6,3 +6,11 @@
   background-color: gainsboro;
   max-width: 200px;
 }
+.flex{
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+}
+.amount{
+  padding: 0 20px;
+}

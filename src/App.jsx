@@ -4,7 +4,7 @@ import UsersSection from "./components/UsersSection/UsersSection";
 function App() {
   return (
     <>
-      <ProductTable />
+      {/* <ProductTable /> */}
       <UsersSection />
     </>
   );
