@@ -1,11 +1,9 @@
-import ProductTable from "./components/ProductsTable/ProductTable";
-import UsersSection from "./components/UsersSection/UsersSection";
+import ShopPage from "./pages/ShopPage";
 
 function App() {
   return (
     <>
-      {/* <ProductTable /> */}
-      <UsersSection />
+      <ShopPage />
     </>
   );
 }

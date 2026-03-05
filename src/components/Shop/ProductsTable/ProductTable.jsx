@@ -1,5 +1,5 @@
 import Product from "../Product/Product";
-import products from "./data";
+import products from "../data";
 import styles from "./ProductTable.module.css"
 
 const ProductTable = () => {

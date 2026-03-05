@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import styles from "./UserProfile.module.css";
 import { mdiThumbUp, mdiThumbDown } from "@mdi/js";
@@ -51,5 +52,13 @@ const UserProfile = (props) => {
     </article>
   );
 };
+
+UserProfile.propTypes = {
+    user: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        age: PropTypes.number.isRequired,
+        email: PropTypes.string.isRequired,
+    })
+    };
 
 export default UserProfile;
