@@ -1,16 +1,16 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
-
 
 const Product = (props) => {
   const {
-    product: {title, price, quantity },
+    product: { id, title, price, quantity },
+    addNewProduct,
   } = props;
-  const [isSelect, setIsSelect] = useState(false);
-  const colorSelect = isSelect ? "red" : "black";
-  const changeIsSelect = ()=>{setIsSelect(true)}
+  // const [isSelect, setIsSelect] = useState(false);
+  // const colorSelect = isSelect ? "red" : "black";
+  // const changeIsSelect = ()=>{setIsSelect(true)}
+  const addToCart = () => addNewProduct(id);
   return (
-    <tr onClick={changeIsSelect} style={{ color: colorSelect }}>
+    <tr onClick={addToCart}>
       <td>{title} </td>
       <td>{price} Uah</td>
       <td>{quantity} etc.</td>
@@ -19,12 +19,11 @@ const Product = (props) => {
 };
 
 Product.propTypes = {
-    product: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        quantity: PropTypes.number,
-    })
-    };
-
+  product: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    quantity: PropTypes.number,
+  }),
+};
 
 export default Product;
