@@ -1,5 +1,7 @@
+import products from "../data";
 import Product from "../Product/Product";
 import styles from "./ProductTable.module.css";
+import PropTypes from "prop-types";
 
 const ProductTable = (props) => {
   const { products, addNewProduct } = props;
@@ -19,5 +21,10 @@ const ProductTable = (props) => {
     </table>
   );
 };
+
+ProductTable.propTypes={
+  products: PropTypes.array,
+  addNewProduct: PropTypes.func
+}
 
 export default ProductTable;
