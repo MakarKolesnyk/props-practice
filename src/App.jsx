@@ -1,9 +1,9 @@
-import ShopPage from "./pages/ShopPage";
+import UserSection from "./components/UsersSection/UsersSection";
 
 function App() {
   return (
     <>
-      <ShopPage />
+      <UserSection/>
     </>
   );
 }

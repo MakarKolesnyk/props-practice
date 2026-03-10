@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
-import styles from "./UserProfile.module.css";
+import styles from "./UserProfile.module.scss";
 import { mdiThumbUp, mdiThumbDown } from "@mdi/js";
+import cx from 'classnames'
 import Icon from "@mdi/react";
 
 const UserProfile = (props) => {
@@ -11,7 +12,6 @@ const UserProfile = (props) => {
   const [isSeclect, setIsSeclect] = useState(false);
   const [amount, setAmount] = useState(0);
   const [isDelete, setIsDelete] = useState(false);
-  const borderSelect = isSeclect ? "4px solid blue" : "4px solid gray";
   const changeIsSelect = () => {
     setIsSeclect(!isSeclect);
   };
@@ -28,16 +28,20 @@ const UserProfile = (props) => {
     }
   };
   const changeIsDelete = ()=>{setIsDelete(true)}
-  const displaySelect = isDelete ? "none" : "block"
-  // if(isDelete) return null
+
+  const articleClasses = cx(styles['user-profile'], {
+    [styles['select']]: isSeclect,
+    [styles['noselect']]: !isSeclect,
+  })
+
+  if(isDelete) return null
   return (
     <article
       onClick={changeIsSelect}
-      className={styles["user-profile"]}
-      style={{ border: borderSelect, display:displaySelect }}
+      className={articleClasses}
     >
       <button onClick={changeIsDelete}>X</button>
-      <h2>name: {name}</h2>
+      <h2>name: <span>{name}</span></h2>
       <h3>age: {age}</h3>
       <p>email: {email}</p>
       <p className={styles.flex}>

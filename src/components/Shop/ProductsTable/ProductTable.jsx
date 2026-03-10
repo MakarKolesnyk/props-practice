@@ -1,4 +1,3 @@
-import products from "../data";
 import Product from "../Product/Product";
 import styles from "./ProductTable.module.css";
 import PropTypes from "prop-types";

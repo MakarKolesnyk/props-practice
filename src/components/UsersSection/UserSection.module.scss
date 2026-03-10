@@ -1,0 +1,10 @@
+@use "/src/common/styles/mixins" as *;
+
+.title {
+  font-size: 2em;
+  text-align: center;
+}
+
+.section {
+  @include flex(row, wrap, space-around, stretch)
+}
