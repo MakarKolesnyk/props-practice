@@ -1,0 +1,11 @@
+@use "/src/common/styles/colors" as *;
+
+%light {
+  color: $mainTextColoer;
+  background-color: $mainBgColor;
+}
+
+%dark {
+  color: $mainBgColor;
+  background-color: $mainTextColoer;
+}

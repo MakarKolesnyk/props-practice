@@ -1,12 +1,15 @@
-import TimerBack from "./components/TimerBack/TimerBack";
+import Header from "./components/Header/Header";
+import HomePage from "./pages/HomePage";
+import { ThemeContext } from "./Contexts";
+import { useState } from "react";
 
 function App() {
+  const [theme, setTheme] = useState('dark');
   return (
-    <>
-      <TimerBack title="New Year" dataStr="2027-01-01" />
-      <TimerBack title="Tommorow" dataStr="2026-03-13" />
-      <TimerBack title="Tommorow" dataStr="2026-03-12 09:16:20" />
-    </>
+    <ThemeContext.Provider value={{theme, setTheme}}>
+      <Header />
+      <HomePage />
+    </ThemeContext.Provider>
   );
 }
 

@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styles from "./UserProfile.module.scss";
 import { mdiThumbUp, mdiThumbDown } from "@mdi/js";
-import cx from 'classnames'
+import cx from "classnames";
 import Icon from "@mdi/react";
+import { ThemeContext } from "../../Contexts";
 
 const UserProfile = (props) => {
   const {
@@ -12,36 +13,42 @@ const UserProfile = (props) => {
   const [isSeclect, setIsSeclect] = useState(false);
   const [amount, setAmount] = useState(0);
   const [isDelete, setIsDelete] = useState(false);
+  const { theme } = useContext(ThemeContext);
+  console.log(theme);
+
   const changeIsSelect = () => {
     setIsSeclect(!isSeclect);
   };
   const addLike = (event) => {
     setAmount(amount + 1);
-    event.stopPropagation()
+    event.stopPropagation();
   };
   const subLike = (event) => {
-    event.stopPropagation()
+    event.stopPropagation();
     if (amount > 0) {
       setAmount(amount - 1);
     } else {
       setAmount(0);
     }
   };
-  const changeIsDelete = ()=>{setIsDelete(true)}
+  const changeIsDelete = () => {
+    setIsDelete(true);
+  };
 
-  const articleClasses = cx(styles['user-profile'], {
-    [styles['select']]: isSeclect,
-    [styles['noselect']]: !isSeclect,
+  const articleClasses = cx(styles["user-profile"], {
+    [styles["select"]]: isSeclect,
+    [styles["noselect"]]: !isSeclect,
+    [styles['light']]: theme === 'light',
+    [styles['dark']]: theme === 'dark',
   })
 
-  if(isDelete) return null
+  if (isDelete) return null;
   return (
-    <article
-      onClick={changeIsSelect}
-      className={articleClasses}
-    >
+    <article onClick={changeIsSelect} className={articleClasses}>
       <button onClick={changeIsDelete}>X</button>
-      <h2>name: <span>{name}</span></h2>
+      <h2>
+        name: <span>{name}</span>
+      </h2>
       <h3>age: {age}</h3>
       <p>email: {email}</p>
       <p className={styles.flex}>
@@ -58,11 +65,11 @@ const UserProfile = (props) => {
 };
 
 UserProfile.propTypes = {
-    user: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        age: PropTypes.number.isRequired,
-        email: PropTypes.string.isRequired,
-    })
-    };
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    age: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+  }),
+};
 
 export default UserProfile;
