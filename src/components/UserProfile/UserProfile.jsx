@@ -1,20 +1,20 @@
 import PropTypes from "prop-types";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import styles from "./UserProfile.module.scss";
 import { mdiThumbUp, mdiThumbDown } from "@mdi/js";
 import cx from "classnames";
 import Icon from "@mdi/react";
-import { ThemeContext } from "../../Contexts";
 import CONSTANTS from "../../contants";
+import { withTheme } from "./../HOCs/index";
 
 const UserProfile = (props) => {
   const {
     user: { name = "Anonim", age = "0", email = "anonim@gmail.com" },
+    theme,
   } = props;
   const [isSeclect, setIsSeclect] = useState(false);
   const [amount, setAmount] = useState(0);
   const [isDelete, setIsDelete] = useState(false);
-  const { theme } = useContext(ThemeContext);
   console.log(theme);
 
   const changeIsSelect = () => {
@@ -71,6 +71,7 @@ UserProfile.propTypes = {
     age: PropTypes.number.isRequired,
     email: PropTypes.string.isRequired,
   }),
+  theme: PropTypes.string,
 };
 
-export default UserProfile;
+export default withTheme(UserProfile);
