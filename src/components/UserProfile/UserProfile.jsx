@@ -5,6 +5,7 @@ import { mdiThumbUp, mdiThumbDown } from "@mdi/js";
 import cx from "classnames";
 import Icon from "@mdi/react";
 import { ThemeContext } from "../../Contexts";
+import CONSTANTS from "../../contants";
 
 const UserProfile = (props) => {
   const {
@@ -38,9 +39,9 @@ const UserProfile = (props) => {
   const articleClasses = cx(styles["user-profile"], {
     [styles["select"]]: isSeclect,
     [styles["noselect"]]: !isSeclect,
-    [styles['light']]: theme === 'light',
-    [styles['dark']]: theme === 'dark',
-  })
+    [styles["light"]]: theme === CONSTANTS.THEME.LIGHT,
+    [styles["dark"]]: theme === CONSTANTS.THEME.DARK,
+  });
 
   if (isDelete) return null;
   return (
