@@ -5,6 +5,7 @@ import CONSTANTS from "../../contants";
 import { withTheme, withUserAccount } from "./../HOCs/index";
 import { PropTypes } from "prop-types";
 import styles from "./Header.module.scss";
+import Menu from './../Menu/Menu';
 
 const Header = (props) => {
   const {
@@ -25,6 +26,7 @@ const Header = (props) => {
   });
   return (
     <header className={headerClasses}>
+      <Menu/>
       <p>
         Hi! {firstName} {lastName}
       </p>
@@ -48,4 +50,4 @@ Header.propTypes = {
   }),
 };
 
-export default withUserAccount(withTheme(Header));
+  export default withUserAccount(withTheme(Header));

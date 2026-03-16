@@ -1,0 +1,15 @@
+.nav {
+  margin-right: auto;
+  ul {
+    display: flex;
+  }
+  li {
+    display: inline-block;
+    a {
+      text-decoration: none;
+      padding: 0 10px;
+      justify-content: start;
+      color: inherit;
+    }
+  }
+}

@@ -24,19 +24,22 @@ $gap: 10px;
   .amount {
     padding: 0 $gap * 2;
   }
+  button {
+    user-select: none;
+  }
 }
 
-.select{
+.select {
   border: 4px solid $accentColor;
 }
-.noselect{
+.noselect {
   border: 4px solid $infoColor;
 }
 
-.light{
-  @extend %light
+.light {
+  @extend %light;
 }
 
-.dark{
-  @extend %dark
+.dark {
+  @extend %dark;
 }

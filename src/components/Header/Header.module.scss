@@ -9,12 +9,18 @@
 }
 
 .header {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    padding: 5px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding: 5px;
+  p {
+    padding: 0 10px;
+  }
+  span {
+    padding: 10px;
+  }
 }
 
 .themeBtn {
-    border: none;
+  border: none; 
 }
