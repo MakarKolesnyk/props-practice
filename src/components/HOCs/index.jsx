@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext, userAccountContext } from "../../Contexts";
+import { ThemeContext, userAccountContext, UserContext } from "../../Contexts";
 
 export const withTheme = (InnerComponent) => {
   return function InnerComponentWithTheme(props) {
@@ -12,5 +12,12 @@ export const withUserAccount = (InnerComponent) => {
   return function InnerComponentWithUserAccount(props) {
     const user = useContext(userAccountContext);
     return <InnerComponent user={user} {...props} />;
+  };
+};
+
+export const withUserAuth = (InnerComponent) => {
+  return function InnerComponentWithUserAuth(props) {
+    const { user, setUser } = useContext(UserContext);
+    return <InnerComponent user={user} setUser={setUser} {...props} />;
   };
 };

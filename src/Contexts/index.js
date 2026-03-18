@@ -7,3 +7,5 @@ const userAccount = {
   lastName: "Pitt",
 };
 export const userAccountContext = createContext(userAccount);
+
+export const UserContext = createContext()
