@@ -1,24 +1,23 @@
 import Icon from "@mdi/react";
-import { mdiWhiteBalanceSunny, mdiWeatherNight } from "@mdi/js";
+import { mdiWhiteBalanceSunny, mdiWeatherNight, mdiLogout } from "@mdi/js";
 import cx from "classnames";
-import CONSTANTS from "../../contants";
-import { withTheme, withUserAuth } from "./../HOCs/index";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
 import styles from "./Header.module.scss";
 import Menu from "./../Menu/Menu";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import CONSTANTS from "../../contants";
+import { withTheme, withUserAuth } from "./../HOCs/index";
 
 const Header = (props) => {
   const { theme, setTheme, user, setUser } = props;
-  const [isSavedUser, setIsSaveduser] = useState(false);
+  const [isSavedUser, setIsSavedUser] = useState();
   const navigate = useNavigate();
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
-      setIsSaveduser(true);
+      setIsSavedUser(true);
     }
-    return () => {};
   }, []);
   const changeTheme = () => {
     setTheme(
@@ -39,8 +38,11 @@ const Header = (props) => {
     <header className={headerClasses}>
       <Menu />
       {user ? (
-        <p>
-          Hi! {user.firstName}! <button onClick={logOutUser}>log out</button>
+        <p className={styles.welcome}>
+          Hi! {user.firstName}!{" "}
+          <span onClick={logOutUser}>
+            <Icon path={mdiLogout} size={1} />
+          </span>
         </p>
       ) : isSavedUser ? (
         <Link to="login">Login</Link>
@@ -65,6 +67,9 @@ Header.propTypes = {
     firstName: PropTypes.string,
     lastName: PropTypes.string,
   }),
+  setUser: PropTypes.function,
 };
 
-export default withUserAuth(withTheme(Header));
+const HeaderWithHOC = withUserAuth(withTheme(Header));
+
+export default HeaderWithHOC;

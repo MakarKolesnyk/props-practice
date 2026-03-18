@@ -1,7 +1,9 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
+import { PropTypes } from "prop-types";
 import { registerSchema } from "./../../helpers/validation";
 import { withUserAuth } from "./../HOCs/index";
-import { useNavigate } from "react-router-dom";
+import styles from './form.module.scss'
 
 const RegisterForm = (props) => {
     const navigate = useNavigate()
@@ -30,22 +32,22 @@ const RegisterForm = (props) => {
     >
       {() => {
         return (
-          <Form>
+          <Form className={styles.form}>
             <label>
               <Field type="text" name="firstName" placeholder="First name" />
-              <ErrorMessage name="firstName" component="div" />
+              <ErrorMessage className={styles.error} name="firstName" component="div" />
             </label>
             <label>
               <Field type="text" name="lastName" placeholder="Last name" />
-              <ErrorMessage name="lastName" component="div" />
+              <ErrorMessage className={styles.error} name="lastName" component="div" />
             </label>
             <label>
               <Field type="email" name="email" placeholder="Email" />
-              <ErrorMessage name="email" component="div" />
+              <ErrorMessage className={styles.error} name="email" component="div" />
             </label>
             <label>
               <Field type="password" name="password" placeholder="Password" />
-              <ErrorMessage name="password" component="div" />
+              <ErrorMessage className={styles.error} name="password" component="div" />
             </label>
             <label>
               <Field
@@ -53,7 +55,7 @@ const RegisterForm = (props) => {
                 name="confirmPassword"
                 placeholder="Confirm password"
               />
-              <ErrorMessage name="confirmPassword" component="div" />
+              <ErrorMessage className={styles.error} name="confirmPassword" component="div" />
             </label>
             <button type="submit">Register</button>
           </Form>
@@ -62,6 +64,10 @@ const RegisterForm = (props) => {
     </Formik>
   );
 };
+
+RegisterForm.propTypes = {
+  setUser: PropTypes.func,
+}
 
 const RegisterFormWithHOC = withUserAuth(RegisterForm);
 export default RegisterFormWithHOC;
