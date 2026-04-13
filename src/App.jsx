@@ -8,9 +8,11 @@ import ShopPage from "./pages/ShopPage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import ProfilesPage from "./pages/ProfilesPage";
 import ProfileInfo from "./components/Profile/ProfileInfo";
+import BookPage from "./pages/BookPage";
 import ProfileSettings from "./components/Profile/ProfileSettings";
 import RegisterForm from "./components/forms/RegisterForm";
 import LoginForm from "./components/forms/LoginForm";
+
 
 function App() {
   const [theme, setTheme] = useState(CONSTANTS.THEME.LIGHT);
@@ -29,6 +31,7 @@ function App() {
             </Route>
             <Route path="register" element={<RegisterForm />} />
             <Route path="login" element={<LoginForm />} />
+            <Route path="books" element={<BookPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </ThemeContext.Provider>

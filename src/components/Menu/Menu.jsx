@@ -16,6 +16,9 @@ const Menu = () => {
           <li>
             <NavLink to="profile">Profile</NavLink>
           </li>
+          <li>
+            <NavLink to="books">Books</NavLink>
+          </li>
       </ul>
     </nav>
   );
